@@ -1,0 +1,16 @@
+# Jupyter Notebook 체크포인트 폴더 (가장 중요!)
+.ipynb_checkpoints
+
+# IPython 로그 및 설정
+IPython/
+__pycache__/
+
+# 가상환경을 사용한다면 추가 (선택사항)
+venv/
+.venv/
+env/
+
+# 기타 시스템 파일
+.DS_Store
+Thumbs.db
+.env
