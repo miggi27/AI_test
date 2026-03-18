@@ -1,0 +1,26 @@
+* 캐글 자전거 대여 수요 예측 데이터 셋을 활용하여 선형회귀와 트리 기반 회귀의 성능 차이 비교
+- 데이터셋 : www.kaggle.com/c/bike-sharing-demand/data
+- 데이터 컬럼 설명
+# datetime : 날짜+시간
+# season : 1=봄, 2=여름,3=가을, 4=겨울
+# holiday : 1=토, 일, 휴일, 0=휴일이 아닌날
+# workingday : 1=주중, 0=주말 및 휴일
+# weather : 1=맑음, 2=안개, 3=가벼운 눈/비 4=심한 눈/비
+# temp : 온도
+# atemp : 체감온도
+# humidity : 습도
+# windspeed : 풍속
+# casual : 사전 등록하지 않은 대여횟수
+# registered : 사전 등록한 대여횟수
+# count : 대여 횟수
+
+- 데이터 클렌징 및 가공과 시각화
+- 선형회귀, 릿지, 라쏘 모델 성능 평가
+- 랜덤포레스트, GBM(Gradient Boosting Machine), XGBoost(eXtreme Gradient Boosting), LightGBM(Light Gradient Boosting Machine) 모델 성능 평가
+
+
+
+회귀 모델 성능 평가 지표(MAE, MSE, RMSE, MAPE 등)
+
+ 선형회귀
+MAE, MSE, RMSE, RMSLE
