@@ -1,0 +1,13 @@
+conda create -n mp310 python=3.10 -y
+conda deactivate
+conda activate mp310
+conda info --envs
+
+pip install opencv-python notebook ipykernel
+pip install mediapipe==0.10.14
+python -m ipykernel install --user --name mp310 --display-name "Python (mp310)"
+
+conda remove -n mp310 --all -y
+
+jupyter kernelspec list
+jupyter kernelspec uninstall mp310
