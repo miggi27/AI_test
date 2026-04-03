@@ -1,0 +1,41 @@
+아나콘다 네비게이터에서 새 가상환경을 만들었는데 Jupyter Notebook 아이콘이 보이지 않을 때는 보통 다음과 같은 이유가 있습니다.
+
+원인   설명   해결 방법
+1️⃣ 환경에 Jupyter 패키지가 설치되지 않음   Navigator는 현재 선택된 환경에 jupyter(또는 notebook) 패키지가 존재할 때만 “Jupyter Notebook” 아이콘을 표시합니다.   
+bash<br># (conda) 환경을 활성화하고 Jupyter 설치<br>conda activate <env_name><br>conda install jupyter notebook -y<br>
+설치 후 Navigator를 Refresh(우측 상단 ↻) 하면 아이콘이 나타납니다.
+2️⃣ ipykernel 미설치   Jupyter 자체는 보이지만 커널 목록에 환경이 안 보이는 경우는 ipykernel이 없기 때문입니다.   
+bash<br>conda activate <env_name><br>conda install ipykernel -y<br># 커널 등록 (이미 해도 무방)<br>python -m ipykernel install --user --name <env_name> --display-name "Python (<env_name>)"<br>
+3️⃣ Navigator가 다른 환경을 가리킴   좌측 Environments 리스트에서 만든 환경을 선택하지 않은 상태에서는 “Home” 화면에 해당 환경의 앱이 나타나지 않습니다.   환경 리스트에서 만든 환경을 클릭 → 오른쪽 Installed 탭에서 “jupyter”가 있는지 확인
+4️⃣ 채널 설정 오류   “Channels” 메뉴가 비어 있거나 연결 오류가 있으면 패키지 설치 자체가 실패할 수 있습니다. 하지만 채널이 비어 있다고 아이콘이 안 뜨는 직접적인 원인은 아닙니다.   기본 채널(defaults)이 활성화돼 있는지 확인하고, 필요하면 conda config --add channels conda-forge 로 추가
+5️⃣ Navigator UI 캐시 문제   가끔 UI가 오래된 캐시를 보여서 새로 설치한 패키지가 바로 반영되지 않을 수 있습니다.   File → Refresh Index 또는 Navigator를 완전히 종료하고 다시 실행
+6️⃣ 베이스 환경에만 Jupyter 설치   새 환경을 만들고 바로 “Home” 탭을 보면 베이스 환경의 아이콘만 보이는 경우가 있습니다.   새 환경을 선택한 뒤 “Home” 탭으로 이동하면 해당 환경에 설치된 앱만 표시됩니다.
+간단 체크리스트
+환경 선택 – Navigator 왼쪽 “Environments”에서 만든 env(cuda 등)를 클릭.
+
+패키지 확인 – Installed 탭에 jupyter·notebook·ipykernel이 있는지 검색.
+
+없다면 설치
+
+Bash
+copy
+conda activate cuda          # 환경 이름
+conda install jupyter notebook ipykernel -y
+Navigator 새로고침 – 오른쪽 상단 ↻ 아이콘 혹은 프로그램 재시작.
+
+Jupyter 실행 – 이제 “Home” 탭에 Jupyter Notebook 아이콘이 나타나야 합니다.
+
+TIP
+Navigator가 불편하다면, Anaconda Prompt(또는 터미널)에서 직접 jupyter notebook 혹은 jupyter lab을 실행해도 전혀 문제 없습니다. 커널 등록만 올바르게 하면 어느 방법으로든 사용할 수 있습니다.
+
+추가 팁 – 커널이 안 보이는 경우
+Bash
+copy
+python -m ipykernel install --user --name cuda --display-name "Python (RTX4060Ti_GPU)"
+위 명령을 한 번 더 실행하면 Jupyter UI(Notebook/Lab)에서 Python (RTX4060Ti_GPU) 커널이 드롭다운에 뜹니다.
+
+요약
+
+환경에 jupyter·ipykernel이 설치돼 있지 않으면 아이콘이 안 보인다.
+환경을 정확히 선택하고, 패키지를 설치·새로고침하면 해결된다.
+필요하면 커맨드 라인에서 직접 jupyter notebook을 실행해도 된다.
